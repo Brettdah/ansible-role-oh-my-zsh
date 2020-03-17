@@ -1,6 +1,5 @@
 ---
 - name: install zsh dependencies on redhat
   yum:
-    name: "{{ item }}"
+    name: "{{ zsh_redhat_deps }}"
     state: latest
-  with_items: "{{ zsh_redhat_deps }}"
