@@ -85,10 +85,10 @@ fi
 
 
 # environment variables
-{% for key,value in (account_env_vars[item.user] | default({})).iteritems() %}
-export {{ key|upper }}="{{ value }}"
+{% for item in (account_env_vars[item.user] | default({}))|dict2items %}
+export {{ item.key|upper }}="{{ item.value }}"
 {% endfor %}
 
-{% for key,value in (item.env_vars | default({})).iteritems() %}
-export {{ key|upper }}="{{ value }}"
+{% for item in (item.env_vars | default({}))|dict2items %}
+export {{ item.key|upper }}="{{ item.value }}"
 {% endfor %}
